@@ -1,23 +1,39 @@
+"use client";
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
-import { getAnimeResponse } from "./libs/libs-api";
+import {
+  getAnimeResponse,
+  getNestedAnimeResponse,
+  reproduce,
+} from "@/libs/libs-api";
 
 const Page = async () => {
-  // const response = await fetch(
-  //   `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=6`
-  // );
   const anime = await getAnimeResponse("top/anime", "limit=6");
-  //console.log(anime);
+  let rekomenAnime = await getNestedAnimeResponse(
+    "recommendations/anime",
+    "entry"
+  );
+  // timpa rekomen anime dengan fungsi reproduce jgn lupa impor dulu fungsinya
+  rekomenAnime = reproduce(rekomenAnime, 4);
+
+  //munculkan data recomendation
+  //console.log(rekomenAnime);
 
   return (
-    <div>
-      <Header
-        title={"Terpopuler"}
-        linkHref={"/populer"}
-        titleRef={"Lihat semua"}
-      />
-      <AnimeList api={anime} />
-    </div>
+    <>
+      <section>
+        <Header
+          title={"Terpopuler"}
+          linkHref={"/populer"}
+          titleRef={"Lihat semua"}
+        />
+        <AnimeList api={anime} />
+      </section>
+      <section>
+        <Header title={"Rekomendasi"} />
+        <AnimeList api={rekomenAnime} />
+      </section>
+    </>
   );
 };
 export default Page;

@@ -1,4 +1,4 @@
-import { getAnimeResponse } from "@/app/libs/libs-api";
+import { getAnimeResponse } from "@/libs/libs-api";
 import YoutubeTrailer from "@/components/Utilities/YoutubeTrailer";
 import Image from "next/image";
 

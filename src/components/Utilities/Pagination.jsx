@@ -5,6 +5,9 @@ const Pagination = ({ setPage, page, lastpage }) => {
   const handlePrev = () => {
     setPage((page) => page - 1);
   };
+  // const handleRandomNum = () => {
+  //   setRandomNum(Math.floor(Math.random(maxVal - minVal + 1) + minVal));
+  // };
 
   return (
     <div className="flex flex-row justify-center text-primary gap-2 p-4">
