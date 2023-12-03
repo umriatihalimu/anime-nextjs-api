@@ -1,8 +1,9 @@
 "use client";
 import { FileSearch } from "@phosphor-icons/react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
   return (
     <div>
       <div className=" text-primary items-center justify-center p-3 flex flex-col min-h-screen">
@@ -10,12 +11,13 @@ const Page = () => {
           <FileSearch size={36} />
         </div>
         <h4 className="pt-2 pb-1"> Halaman Tidak ditemukan</h4>
-        <Link
+        <button
+          onClick={() => router.back()}
           className="underline text-sm hover:text-secondary font-extralight"
           href="/"
         >
           Kembali
-        </Link>
+        </button>
       </div>
     </div>
   );

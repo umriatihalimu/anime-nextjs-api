@@ -1,14 +1,18 @@
-import { getAnimeResponse } from "@/libs/libs-api";
+import { getAnimeResponse } from "@/libs/api-libs";
 import YoutubeTrailer from "@/components/Utilities/YoutubeTrailer";
 import Image from "next/image";
+import KoleksiBtn from "@/components/AnimeList/KoleksiBtn";
+import { authUserSession } from "@/libs/auth-libs";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
+  const user = await authUserSession();
   //console.log(anime);
-  return (
-    <div className=" text-primary p-5 ">
-      <h2 className="text-xl font-semibold ">{anime.data.title}</h2>
 
+  return (
+    <div className=" text-primary p-3 ">
+      <h2 className="text-xl font-semibold py-4 ">{anime.data.title}</h2>
+      <KoleksiBtn anime_mal_id={id} user_email={user?.email} />
       <div className="p-2 text-sm flex  text-primary overflow-x-auto">
         <div className="p-1 text-black">
           <h5 className=" rounded-md bg-primary px-2">

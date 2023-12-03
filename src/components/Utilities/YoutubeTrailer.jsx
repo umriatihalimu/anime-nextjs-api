@@ -38,10 +38,10 @@ const YoutubeTrailer = ({ videoId }) => {
   const BtnPlayer = () => {
     return (
       <button
-        className="fixed bottom-4 right-5 bg-primary text-black hover:bg-secondary rounded p-1 text-sm"
+        className="fixed bottom-4 right-5 bg-primary text-black hover:bg-gray-500 rounded p-1 text-sm"
         onClick={handleBtn}
       >
-        Tonton trailer
+        Lihat trailer
       </button>
     );
   };

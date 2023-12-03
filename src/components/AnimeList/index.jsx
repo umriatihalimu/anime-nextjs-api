@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const AnimeList = ({ api }) => {
   return (
-    <div className="grid  md:grid-cols-4 grid-cols-2 gap-2 justify-center ms-5 me-5 ">
+    <div className="grid md:grid-cols-4 grid-cols-2 gap-2 justify-center ms-5 me-5 ">
       {api.data?.map((data, index) => {
         return (
           <Link
@@ -15,8 +15,8 @@ const AnimeList = ({ api }) => {
           >
             <Image
               className="rounded"
-              width={100}
-              height={100}
+              width={500}
+              height={500}
               src={data.images.webp.image_url}
               alt={data.images.jpg.image_url}
               priority={false}

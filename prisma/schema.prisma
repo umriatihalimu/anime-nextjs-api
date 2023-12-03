@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Collection{
+  id                Int @id @default(autoincrement())
+  anime_mal_id      String 
+  user_email        String
+
+  // 1 user bisa punya banyak koleksi anime tapi tdk boleh dobel/tambahkan id yg sama maka:
+  @@unique([user_email,anime_mal_id])
+}
