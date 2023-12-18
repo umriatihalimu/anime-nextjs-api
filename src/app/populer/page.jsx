@@ -1,7 +1,7 @@
 "use client";
 
 import { getAnimeResponse } from "../../libs/api-libs";
-import AnimeList from "@/components/AnimeList";
+import PopAnime from "@/components/AnimeList/PopAnime";
 import { useEffect, useState } from "react";
 import Pagination from "@/components/Utilities/Pagination";
 import HeaderPopuler from "@/components/Utilities/HeaderPopuler";
@@ -25,7 +25,7 @@ const Page = () => {
   return (
     <>
       <HeaderPopuler title={"Populer"} page={page} />
-      <AnimeList api={animePopuler} />
+      <PopAnime api={animePopuler} />
       <Pagination setPage={setPage} lastpage={lastpage} page={page} />
     </>
   );

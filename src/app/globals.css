@@ -7,11 +7,6 @@
   padding: 0;
 }
 
-img {
-  min-height: 250px;
-  max-height: 400px;
-}
-
 .card {
   background-color: #0f172a;
   padding: 4px;

@@ -1,5 +1,5 @@
 import { getAnimeResponse } from "@/libs/api-libs";
-import AnimeList from "@/components/AnimeList";
+import PopAnime from "@/components/AnimeList/PopAnime";
 import Header from "@/components/AnimeList/Header";
 
 const Page = async ({ params: { keyword } }) => {
@@ -14,7 +14,7 @@ const Page = async ({ params: { keyword } }) => {
     <>
       <section>
         <Header title={`Pencarian untuk ${decode}`} />
-        <AnimeList api={searchAnime} />
+        <PopAnime api={searchAnime} />
       </section>
     </>
   );

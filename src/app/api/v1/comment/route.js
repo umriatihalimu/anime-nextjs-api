@@ -7,13 +7,11 @@ export async function POST(request) {
   // untuk coba apaka muncul/tdk
   //return Response.json({ data: "hello" });
 
-  const { anime_mal_id, user_email, anime_title, anime_img } =
+  const { anime_mal_id, user_email, username, comment, anime_title } =
     await request.json();
-  const data = { anime_mal_id, user_email, anime_title, anime_img };
-
-  const createCollection = await prisma.collection.create({ data }); //sesuai aturan prisma
-  if (!createCollection)
-    return Response.json({ status: 500, isCreated: false });
+  const data = { anime_mal_id, user_email, username, comment, anime_title };
+  const createComment = await prisma.comment.create({ data }); //sesuai aturan prisma
+  if (!createComment) return Response.json({ status: 500, isCreated: false });
   else {
     return Response.json({ status: 200, isCreated: true });
   }

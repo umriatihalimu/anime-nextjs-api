@@ -11,10 +11,22 @@ datasource db {
 }
 
 model Collection{
-  id                Int @id @default(autoincrement())
-  anime_mal_id      String 
-  user_email        String
+  id                      Int @id @default(autoincrement())
+  anime_mal_id            String
+  user_email              String
+  anime_title             String? //?opsional klo ndd title isinya null
+  anime_img               String?
 
-  // 1 user bisa punya banyak koleksi anime tapi tdk boleh dobel/tambahkan id yg sama maka:
+
   @@unique([user_email,anime_mal_id])
+}
+
+
+model Comment{
+  id            Int @id @default(autoincrement())
+  anime_mal_id  String
+  user_email    String
+  username      String
+  comment       String
+  anime_title   String
 }

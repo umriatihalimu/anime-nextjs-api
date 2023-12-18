@@ -4,7 +4,7 @@ import { authUserSession } from "@/libs/auth-libs";
 const UserActionBtn = async () => {
   // ambil data user dari githubnya dari route.js
   const user = await authUserSession();
-  const actLabel = user ? "Sign Out" : "Sign In";
+  //const actLabel = user ? "Sign Out" : "Sign In";
   const actionURL = user ? "/api/auth/signout" : "/api/auth/signin";
 
   return (
