@@ -29,4 +29,5 @@ model Comment{
   username      String
   comment       String
   anime_title   String
+  rating        Int
 }

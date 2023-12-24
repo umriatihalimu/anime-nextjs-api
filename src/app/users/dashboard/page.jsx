@@ -6,8 +6,8 @@ const Page = async () => {
   const user = await authUserSession();
 
   return (
-    <section>
-      <div className="flex flex-col  text-primary items-center justify-center mt-4">
+    <div className="border-2 h-screen bg-blue-700/30 bg-gradient-to-t from-blue-700/30 to-black border-t border-sky-900/10 ">
+      <div className="flex flex-col text-primary items-center justify-center mt-4">
         <h3 className="m-3 text-lg">Selamat datang, {user?.name}</h3>
         <Image src={user?.image} width={250} height={250} alt="..." />
       </div>
@@ -25,7 +25,7 @@ const Page = async () => {
           My Comment
         </Link>
       </div>
-    </section>
+    </div>
   );
 };
 export default Page;

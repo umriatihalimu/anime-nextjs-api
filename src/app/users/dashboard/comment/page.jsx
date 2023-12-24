@@ -10,9 +10,9 @@ const Page = async () => {
     where: { user_email: user.email },
   });
   return (
-    <>
+    <div className="bg-blue-700/30 bg-gradient-to-t from-blue-700/30 to-black border-t border-sky-900/10  w-full h-screen">
       <Header title={"My Comment"} />
-      <div className="grid grid-cols-4 gap-3 p-4">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 p-4">
         {comments.map((comment) => {
           return (
             <Link
@@ -26,7 +26,7 @@ const Page = async () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 export default Page;

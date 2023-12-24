@@ -1,19 +1,26 @@
 import React from "react";
 import prisma from "@/libs/prisma";
+import { FaStar } from "react-icons/fa";
+const colors = {
+  orange: "#F59E0B",
+  grey: "#a3a8a8",
+};
 
 const KomenBox = async ({ anime_mal_id }) => {
+  const stars = Array(5).fill(0);
+
   const comments = await prisma.comment.findMany({
     where: { anime_mal_id },
   });
 
   return (
     <div>
-      <div className="bg-slate-400 mt-3 ">
+      <div className="mt-5 bg-primary rounded">
         {comments.map((comment) => {
           return (
             <div
               key={comment.id}
-              className=" bg-primary  text-slate-700 p-3 text-sm rounded flex flex-cols gap-3"
+              className="text-slate-700 p-3 text-md flex flex-cols gap-3 "
             >
               <div>
                 <svg
@@ -22,7 +29,7 @@ const KomenBox = async ({ anime_mal_id }) => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-7 h-7 hover:text-slate-400 "
+                  className="w-8 h-8 mt-1 hover:text-slate-400  "
                 >
                   <path
                     strokeLinecap="round"
@@ -31,24 +38,22 @@ const KomenBox = async ({ anime_mal_id }) => {
                   />
                 </svg>
               </div>
+
               <div>
                 <p className="font-bold">{comment.username} </p>
                 <p>{comment.comment}</p>
-                <p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                <p className="flex flex-row mt-1">
+                  {stars.map((_, index) => (
+                    <FaStar
+                      key={index}
+                      className="mx-0.5 "
+                      size={16}
+                      value={comment.rating}
+                      color={
+                        comment.rating > index ? colors.orange : colors.grey
+                      }
                     />
-                  </svg>
+                  ))}
                 </p>
               </div>
             </div>

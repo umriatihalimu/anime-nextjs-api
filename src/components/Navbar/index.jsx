@@ -4,7 +4,7 @@ import UserActionBtn from "./UserActionBtn";
 
 const Navbar = () => {
   return (
-    <header className="bg-black text-primary w-full ">
+    <header className="  text-primary w-full ">
       <div className="flex p-4 max-w-screen-2xl md:flex-row flex-col gap-y-2 justify-between items-center  py-5  h-full uppercase">
         <Link href="/" className=" font-bold text-2xl">
           Anime.id

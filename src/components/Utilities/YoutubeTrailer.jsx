@@ -2,15 +2,16 @@
 import YouTube from "react-youtube";
 import { X } from "@phosphor-icons/react";
 import { useState } from "react";
+import { PlayIcon } from "@heroicons/react/24/solid";
 
 const YoutubeTrailer = ({ videoId }) => {
   const option = {
     //bawaan react min ada width dan heigt
-    width: "280",
-    height: "230",
+    width: "310",
+    height: "250",
   };
 
-  const [isOpen, setIsOpen] = useState(true); //yt trailer awalnya true(terbuka)
+  const [isOpen, setIsOpen] = useState(false); //yt trailer awalnya false (tertutup)
   const handleBtn = () => {
     setIsOpen((prevBtn) => !prevBtn);
   };
@@ -19,6 +20,7 @@ const YoutubeTrailer = ({ videoId }) => {
     return (
       <div className="fixed bottom-2 right-2 ">
         {/* float-right spy ke kanan btnnya */}
+
         <button
           className="justify-end bg-black float-right mb-1"
           onClick={handleBtn}
@@ -38,15 +40,23 @@ const YoutubeTrailer = ({ videoId }) => {
   const BtnPlayer = () => {
     return (
       <button
-        className="fixed bottom-4 right-5 bg-primary text-black hover:bg-gray-500 rounded p-1 text-sm"
+        className="flex flex-row ms-1 p-2 px-4 bg-slate-900 rounded-2xl gap-1 hover:bg-opacity-50 hover:text-white/80 shadow-md text-sm font-semibold"
         onClick={handleBtn}
       >
-        Lihat trailer
+        <PlayIcon className="h-6 w-6 text-primary " />
+        Trailer
       </button>
     );
   };
 
   // jika vid open maka jalankan komponen Player
-  return isOpen ? <Player /> : <BtnPlayer />;
+  return isOpen ? (
+    <div>
+      <Player />
+      <BtnPlayer />
+    </div>
+  ) : (
+    <BtnPlayer />
+  );
 };
 export default YoutubeTrailer;

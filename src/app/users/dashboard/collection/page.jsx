@@ -11,7 +11,7 @@ const Page = async () => {
   });
   //console.log(collection);
   return (
-    <>
+    <div className="bg-blue-700/30 bg-gradient-to-t from-blue-700/30 to-black border-t border-sky-900/10  w-full h-screen">
       <Header title={"My Collection"} />
       <div className="grid mx-4 lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-4 mt-3 justify-center text-primary">
         {collection.map((collect, index) => {
@@ -21,7 +21,7 @@ const Page = async () => {
             <Link
               key={index}
               href={`/anime/${collect.anime_mal_id}`}
-              className="relative border-2  rounded border-primary"
+              className="relative rounded "
             >
               <Image
                 src={collect.anime_img}
@@ -39,7 +39,7 @@ const Page = async () => {
           //console.log(anime);
         })}
       </div>
-    </>
+    </div>
   );
 };
 export default Page;

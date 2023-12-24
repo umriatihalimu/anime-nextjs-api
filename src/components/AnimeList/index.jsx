@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const AnimeList = ({ api }) => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div className="flex min-h-screen items-center justify-center bg-black/40 mt-10 mb-16">
       <div className="grid sm:grid-cols-2  lg:grid-cols-3 gap-5 ">
@@ -35,6 +38,7 @@ const AnimeList = ({ api }) => {
                 <Link
                   className="rounded bg-neutral-900 py-2 px-3.5 text-sm capitalize text-primary shadow shadow-black/60 "
                   href={`/anime/${data.mal_id}`}
+                  onClick={scrollToTop}
                   key={index}
                 >
                   Lihat

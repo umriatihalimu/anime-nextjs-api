@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import Link from "next/link";
 
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
@@ -29,26 +29,25 @@ const RekAnime = ({ api }) => {
         />
         <div
           id="slider"
-          className="flex overflow-x-scroll  scroll scroll-smooth    scrollbar-hide "
+          className="flex overflow-x-scroll  scroll scroll-smooth scrollbar-hide "
         >
           {api.data?.map((data, index) => {
             return (
-              <div className="p-1">
-                <div className="h-68 w-72">
-                  <Link href={`/anime/${data.mal_id}`} key={index}>
-                    <Image
-                      className="p-2 rounded  w-full object-cover h-60"
-                      width={100}
-                      height={100}
-                      src={data.images.webp.image_url}
-                      alt={data.images.jpg.image_url}
-                      priority={false}
-                    />
-
-                    <p className="p-2 text-sm font-semibold">{data.title}</p>
-                  </Link>
+              <Link
+                href={`/anime/${data.mal_id}`}
+                key={index}
+                className="flex flex-col p-2 h-58 w-80 gap-3 pb-10 "
+              >
+                <div className="w-72 h-58 ">
+                  <img
+                    src={data.images.webp.image_url}
+                    alt=""
+                    className="h-48 w-full object-cover"
+                  />
                 </div>
-              </div>
+
+                <p className=" text-sm font-semibold">{data.title}</p>
+              </Link>
             );
           })}
         </div>
